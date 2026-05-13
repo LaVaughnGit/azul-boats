@@ -2,6 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { sendCustomerConfirmation, sendBusinessNotification } from "@/lib/emails";
 import type { BookingDetails } from "@/lib/emails";
+import { supabaseServer } from "@/lib/supabase";
+
+function timeToHour(time: string): number {
+  const [timePart, period] = time.split(" ");
+  const hours = Number(timePart.split(":")[0]);
+  if (period === "AM") return hours === 12 ? 0 : hours;
+  return hours === 12 ? 12 : hours + 12;
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2026-04-22.dahlia",
@@ -45,6 +53,17 @@ export async function POST(req: NextRequest) {
       totalAmount: Number(meta.totalAmount ?? 0),
       specialRequests: meta.specialRequests ?? "",
     };
+
+    const startHour = timeToHour(booking.time);
+    const endHour = startHour + booking.duration;
+
+    await supabaseServer.from("bookings").insert({
+      stripe_session_id: session.id,
+      date: booking.date,
+      start_hour: startHour,
+      end_hour: endHour,
+      duration_hours: booking.duration,
+    });
 
     try {
       await Promise.all([

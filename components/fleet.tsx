@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useBookingModal } from "./booking-modal-provider";
-import { Users, Music, Droplets, Waves, IceCream, Anchor, CheckCircle } from "lucide-react";
+import { Music, Droplets, Waves, IceCream, Anchor, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
@@ -234,7 +234,7 @@ export default function Fleet() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-white/30 mt-6"
         >
-          All three boats are identical — available 7 days a week, 8 AM – 6 PM
+          All three boats are identical — available 7 days a week, 8 AM – 9 PM
         </motion.p>
       </div>
     </section>

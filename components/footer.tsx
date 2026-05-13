@@ -92,7 +92,7 @@ export default function Footer() {
               Your perfect Miami day is one booking away.
             </h3>
             <p className="text-white/50 text-sm">
-              Available 7 days a week · 8 AM – 6 PM · (305) 690-3270
+              Available 7 days a week · 8 AM – 9 PM · (305) 690-3270
             </p>
           </div>
           <button
@@ -176,7 +176,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#FF2D78] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm text-white/60">Miami Marina</p>
+                  <p className="text-sm text-white/60">Danny's Backyard</p>
                   <p className="text-xs text-white/30">Miami, FL 33101</p>
                 </div>
               </li>
@@ -208,9 +208,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {[
-                { day: "Monday – Friday", hours: "8:00 AM – 6:00 PM" },
-                { day: "Saturday", hours: "7:00 AM – 7:00 PM" },
-                { day: "Sunday", hours: "8:00 AM – 6:00 PM" },
+                { day: "Monday – Friday", hours: "8:00 AM – 9:00 PM" },
+                { day: "Saturday", hours: "7:00 AM – 9:00 PM" },
+                { day: "Sunday", hours: "8:00 AM – 9:00 PM" },
                 { day: "Holidays", hours: "By appointment" },
               ].map(({ day, hours }) => (
                 <li key={day} className="flex justify-between text-sm gap-4">

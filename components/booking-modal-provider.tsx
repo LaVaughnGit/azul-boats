@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -52,6 +52,7 @@ export function useBookingModal() {
 const TIME_SLOTS = [
   "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
   "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM",
+  "7:00 PM", "8:00 PM", "9:00 PM",
 ];
 
 const DURATIONS = [2, 3, 4, 5, 6, 7, 8];
@@ -89,12 +90,31 @@ const labelCls = "block text-xs font-semibold text-white/50 uppercase tracking-w
 
 /* ─────────────────────────────── Step components ─────────────────────────────── */
 
+type SlotInfo = { start_hour: number; end_hour: number };
+
+function timeToHour(time: string): number {
+  const [timePart, period] = time.split(" ");
+  const hours = Number(timePart.split(":")[0]);
+  if (period === "AM") return hours === 12 ? 0 : hours;
+  return hours === 12 ? 12 : hours + 12;
+}
+
+function availableBoats(booked: SlotInfo[], startHour: number, duration: number): number {
+  const endHour = startHour + duration;
+  const overlaps = booked.filter(b => b.start_hour < endHour && b.end_hour > startHour).length;
+  return 3 - overlaps;
+}
+
 function StepOne({
   data,
   onChange,
+  bookedSlots,
+  availabilityLoading,
 }: {
   data: BookingData;
   onChange: (d: Partial<BookingData>) => void;
+  bookedSlots: SlotInfo[];
+  availabilityLoading: boolean;
 }) {
   const today = new Date();
   today.setDate(today.getDate() + 1);
@@ -110,7 +130,7 @@ function StepOne({
             type="date"
             min={minDate}
             value={data.date}
-            onChange={(e) => onChange({ date: e.target.value })}
+            onChange={(e) => onChange({ date: e.target.value, time: "" })}
             className={`${inputCls} pl-11 [color-scheme:dark]`}
             required
           />
@@ -118,24 +138,54 @@ function StepOne({
       </div>
 
       <div>
-        <label className={labelCls}>Start Time</label>
-        <div className="relative">
-          <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00E5FF] pointer-events-none" />
-          <select
-            value={data.time}
-            onChange={(e) => onChange({ time: e.target.value })}
-            className={`${inputCls} pl-11 appearance-none cursor-pointer`}
-          >
-            <option value="" disabled className="bg-[#0D0D2B]">
-              Choose a start time
-            </option>
-            {TIME_SLOTS.map((t) => (
-              <option key={t} value={t} className="bg-[#0D0D2B]">
-                {t}
-              </option>
-            ))}
-          </select>
-        </div>
+        <label className={labelCls}>
+          <span className="flex items-center gap-2">
+            <Clock className="w-3.5 h-3.5 text-[#00E5FF]" />
+            Start Time
+            {availabilityLoading && (
+              <span className="text-white/30 text-[10px] normal-case tracking-normal">checking availability…</span>
+            )}
+          </span>
+        </label>
+        {!data.date ? (
+          <p className="text-sm text-white/30 py-2">Select a date first to see available times.</p>
+        ) : (
+          <div className="grid grid-cols-3 gap-2">
+            {TIME_SLOTS.map((t) => {
+              const startHour = timeToHour(t);
+              const pastCutoff = startHour + data.duration > 21;
+              const available = pastCutoff ? 0 : availableBoats(bookedSlots, startHour, data.duration);
+              const isFull = available === 0;
+              const isSelected = data.time === t;
+
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  disabled={isFull}
+                  onClick={() => onChange({ time: t })}
+                  className={`relative flex flex-col items-center py-2.5 px-2 rounded-xl text-xs font-semibold transition-all ${
+                    isSelected
+                      ? "bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] text-white shadow-lg shadow-pink-500/20"
+                      : isFull
+                      ? "bg-white/3 border border-white/5 text-white/20 cursor-not-allowed"
+                      : "bg-white/5 border border-white/10 text-white/70 hover:border-white/20 hover:text-white"
+                  }`}
+                >
+                  {t}
+                  {!pastCutoff && !isFull && available < 3 && (
+                    <span className={`text-[9px] mt-0.5 font-medium ${available === 1 ? "text-orange-400" : "text-amber-400"}`}>
+                      {available} left
+                    </span>
+                  )}
+                  {isFull && (
+                    <span className="text-[9px] mt-0.5 text-white/25">Full</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div>
@@ -145,7 +195,7 @@ function StepOne({
             <button
               key={h}
               type="button"
-              onClick={() => onChange({ duration: h })}
+              onClick={() => onChange({ duration: h, time: "" })}
               className={`py-2.5 rounded-xl text-sm font-semibold transition-all ${
                 data.duration === h
                   ? "bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] text-white shadow-lg shadow-pink-500/20"
@@ -409,6 +459,18 @@ function BookingModal({
   const [data, setData] = useState<BookingData>(defaultBooking);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [bookedSlots, setBookedSlots] = useState<SlotInfo[]>([]);
+  const [availabilityLoading, setAvailabilityLoading] = useState(false);
+
+  useEffect(() => {
+    if (!data.date) return;
+    setAvailabilityLoading(true);
+    fetch(`/api/availability?date=${data.date}`)
+      .then((r) => r.json())
+      .then((json) => setBookedSlots(json.bookings ?? []))
+      .catch(() => setBookedSlots([]))
+      .finally(() => setAvailabilityLoading(false));
+  }, [data.date]);
 
   const onChange = useCallback((partial: Partial<BookingData>) => {
     setData((prev) => ({ ...prev, ...partial }));
@@ -461,6 +523,7 @@ function BookingModal({
       <DialogContent
         className="max-w-lg w-full p-0 overflow-hidden border-0 bg-transparent shadow-none"
         style={{ background: "transparent" }}
+        showCloseButton={false}
       >
         <div
           className="relative rounded-3xl overflow-hidden"
@@ -527,7 +590,7 @@ function BookingModal({
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.2 }}
               >
-                {step === 0 && <StepOne data={data} onChange={onChange} />}
+                {step === 0 && <StepOne data={data} onChange={onChange} bookedSlots={bookedSlots} availabilityLoading={availabilityLoading} />}
                 {step === 1 && <StepTwo data={data} onChange={onChange} />}
                 {step === 2 && <StepThree data={data} onChange={onChange} />}
                 {step === 3 && <StepFour data={data} />}
