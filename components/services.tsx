@@ -21,7 +21,7 @@ const SERVICES = [
       "No prior experience needed (self-drive)",
       "Available 7 days a week",
     ],
-    image: "https://images.unsplash.com/photo-1544552942-9a7b93af3a7f?w=800&q=80",
+    image: "/images/crownline2.jpg",
     cta: "Book a Rental",
   },
   {
