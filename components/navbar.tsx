@@ -89,14 +89,22 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden w-10 h-10 flex items-center justify-center text-white rounded-xl hover:bg-white/5 transition-colors"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile: phone + hamburger */}
+          <div className="md:hidden flex items-center gap-3">
+            <a
+              href="tel:+13056903270"
+              className="text-xs text-white/50 hover:text-white transition-colors font-medium"
+            >
+              (305) 690-3270
+            </a>
+            <button
+              className="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:bg-white/5 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 

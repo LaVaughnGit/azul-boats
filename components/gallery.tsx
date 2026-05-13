@@ -7,8 +7,8 @@ import { X, ZoomIn } from "lucide-react";
 
 const PHOTOS = [
   {
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-    alt: "Crystal clear water",
+    src: "/images/miami/miami1.jpg",
+    alt: "Miami on the water",
     span: "col-span-2 row-span-2",
   },
   {
@@ -17,29 +17,24 @@ const PHOTOS = [
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1544552942-9a7b93af3a7f?w=600&q=80",
-    alt: "Waves on the water",
+    src: "/images/miami/miami2.jpg",
+    alt: "Miami skyline from the bay",
     span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=800&q=80",
-    alt: "Luxury speedboat",
-    span: "col-span-2",
   },
   {
     src: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=600&q=80",
     alt: "Sunset on the ocean",
+    span: "col-span-2",
+  },
+  {
+    src: "/images/miami/miami3.jpg",
+    alt: "Miami waterfront",
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80",
-    alt: "Palm trees and beach",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1531961669-3869aa4cb6d4?w=600&q=80",
-    alt: "Snorkeling in clear water",
-    span: "",
+    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    alt: "Crystal clear water",
+    span: "col-span-2",
   },
 ];
 

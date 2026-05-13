@@ -107,7 +107,7 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.65)}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
         >
           <button
             onClick={openModal}
@@ -127,10 +127,27 @@ export default function Hero() {
           </a>
         </motion.div>
 
+        {/* Scroll indicator */}
+        <motion.a
+          href="#fleet"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="flex flex-col items-center gap-2 mb-8 text-white/30 hover:text-white/60 transition-colors"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.a>
+
         {/* Stats bar */}
         <motion.div
           {...fadeUp(0.8)}
-          className="inline-flex flex-wrap justify-center gap-px overflow-hidden rounded-2xl border border-white/10"
+          className="inline-flex flex-wrap justify-center gap-px overflow-hidden rounded-2xl border border-white/10 mb-10"
           style={{ background: "rgba(255,255,255,0.03)" }}
         >
           {STATS.map(({ icon: Icon, label, value }, i) => (
@@ -150,23 +167,6 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.a
-        href="#fleet"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </motion.a>
     </section>
   );
 }

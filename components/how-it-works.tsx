@@ -182,7 +182,7 @@ export default function HowItWorks() {
               Ready to set sail?
             </h3>
             <p className="text-white/50 mb-8 max-w-md mx-auto">
-              Booking takes less than 3 minutes. Your Miami adventure is waiting.
+              Booking takes less than 3 minutes.
             </p>
             <button
               onClick={openModal}

@@ -16,6 +16,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: "/favicon.svg" },
   title: "Azul Boat Rentals | Luxury Boat Rentals in Miami, FL",
   description:
     "Experience the beauty of Biscayne Bay aboard a 24ft Crownline Bowrider. Self-drive or captained rentals from $80/hr. Up to 12 passengers. Book online today.",
