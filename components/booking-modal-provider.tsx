@@ -121,7 +121,7 @@ function StepOne({
   const minDate = today.toISOString().split("T")[0];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
         <label className={labelCls}>Select Date</label>
         <div className="relative">
@@ -209,9 +209,9 @@ function StepOne({
       </div>
 
       {/* Live price preview */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#FF2D78]/10 to-[#7B2FBE]/10 border border-[#FF2D78]/20 p-4">
+      <div className="rounded-2xl bg-gradient-to-br from-[#FF2D78]/10 to-[#7B2FBE]/10 border border-[#FF2D78]/20 p-3 sm:p-4">
         <p className="text-xs text-white/50 uppercase tracking-widest mb-1">Estimated Total</p>
-        <p className="text-3xl font-black text-white">
+        <p className="text-2xl sm:text-3xl font-black text-white">
           ${BOAT_RATE * data.duration}
           <span className="text-base font-normal text-white/40 ml-1">
             ({data.duration}h × ${BOAT_RATE}/hr)
@@ -526,18 +526,19 @@ function BookingModal({
         showCloseButton={false}
       >
         <div
-          className="relative rounded-3xl overflow-hidden"
+          className="relative rounded-3xl overflow-hidden flex flex-col"
           style={{
             background: "#0A0A20",
             border: "1px solid rgba(255,255,255,0.1)",
             boxShadow: "0 0 80px rgba(255,45,120,0.15), 0 25px 60px rgba(0,0,0,0.6)",
+            maxHeight: "90dvh",
           }}
         >
           {/* Top gradient bar */}
-          <div className="h-1 w-full bg-gradient-to-r from-[#FF2D78] via-[#7B2FBE] to-[#00E5FF]" />
+          <div className="h-1 w-full bg-gradient-to-r from-[#FF2D78] via-[#7B2FBE] to-[#00E5FF] flex-shrink-0" />
 
           {/* Header */}
-          <div className="px-6 pt-6 pb-4 flex items-start justify-between">
+          <div className="px-5 pt-4 pb-3 sm:px-6 sm:pt-6 sm:pb-4 flex items-start justify-between flex-shrink-0">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] flex items-center justify-center">
@@ -564,7 +565,7 @@ function BookingModal({
           </div>
 
           {/* Step indicators */}
-          <div className="px-6 mb-5">
+          <div className="px-5 mb-3 sm:px-6 sm:mb-5 flex-shrink-0">
             <div className="flex gap-1.5">
               {STEPS.map((_, i) => (
                 <div
@@ -581,7 +582,7 @@ function BookingModal({
           </div>
 
           {/* Step content */}
-          <div className="px-6 pb-4" style={{ minHeight: "340px" }}>
+          <div className="px-5 pb-4 sm:px-6 overflow-y-auto flex-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
@@ -604,7 +605,7 @@ function BookingModal({
           )}
 
           {/* Footer actions */}
-          <div className="px-6 pb-6 flex gap-3">
+          <div className="px-5 pb-4 sm:px-6 sm:pb-6 pt-2 flex gap-3 flex-shrink-0 border-t border-white/5">
             {step > 0 && (
               <button
                 onClick={handleBack}
