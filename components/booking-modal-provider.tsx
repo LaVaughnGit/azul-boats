@@ -138,6 +138,26 @@ function StepOne({
       </div>
 
       <div>
+        <label className={labelCls}>Duration</label>
+        <div className="grid grid-cols-5 gap-2">
+          {DURATIONS.map((h) => (
+            <button
+              key={h}
+              type="button"
+              onClick={() => onChange({ duration: h, time: "" })}
+              className={`py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                data.duration === h
+                  ? "bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] text-white shadow-lg shadow-pink-500/20"
+                  : "bg-white/5 border border-white/10 text-white/60 hover:border-white/20 hover:text-white"
+              }`}
+            >
+              {h}h
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
         <label className={labelCls}>
           <span className="flex items-center gap-2">
             <Clock className="w-3.5 h-3.5 text-[#00E5FF]" />
@@ -186,26 +206,6 @@ function StepOne({
             })}
           </div>
         )}
-      </div>
-
-      <div>
-        <label className={labelCls}>Duration</label>
-        <div className="grid grid-cols-5 gap-2">
-          {DURATIONS.map((h) => (
-            <button
-              key={h}
-              type="button"
-              onClick={() => onChange({ duration: h, time: "" })}
-              className={`py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                data.duration === h
-                  ? "bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] text-white shadow-lg shadow-pink-500/20"
-                  : "bg-white/5 border border-white/10 text-white/60 hover:border-white/20 hover:text-white"
-              }`}
-            >
-              {h}h
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Live price preview */}
