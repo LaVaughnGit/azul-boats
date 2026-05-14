@@ -95,6 +95,14 @@ export async function sendCustomerConfirmation(booking: BookingDetails) {
             </tr>
           </table>
 
+          <!-- Marina Address -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;margin-bottom:28px;">
+            <tr><td style="padding:14px 18px;color:#0c4a6e;font-size:13px;line-height:1.6;">
+              📍 <strong>Where to show up:</strong><br>
+              2380 Diana Drive, Hallandale Beach, Florida 33009
+            </td></tr>
+          </table>
+
           <!-- What to bring -->
           <h3 style="margin:0 0 12px;color:#111827;font-size:15px;font-weight:700;">📋 What to Bring</h3>
           <ul style="margin:0 0 24px;padding-left:20px;color:#6b7280;font-size:13px;line-height:2;">
@@ -108,7 +116,7 @@ export async function sendCustomerConfirmation(booking: BookingDetails) {
           <!-- Important note -->
           <table width="100%" cellpadding="0" cellspacing="0" style="background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;margin-bottom:28px;">
             <tr><td style="padding:14px 18px;color:#92400e;font-size:13px;line-height:1.6;">
-              ⚠️ <strong>Please arrive 15 minutes before your start time</strong> for a quick orientation. Our team will be dockside to get you set up. Full marina address and parking instructions were included in your Stripe receipt.
+              ⚠️ <strong>Please arrive 15 minutes before your start time</strong> for a quick orientation. Our team will be dockside to get you set up. Street parking is available.
             </td></tr>
           </table>
 
