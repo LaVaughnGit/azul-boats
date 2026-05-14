@@ -26,7 +26,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 RESEND_API_KEY=re_...
 EMAIL_FROM=Azul Boat Rentals <onboarding@resend.dev>
-BUSINESS_EMAIL=lavannv@gmail.com
+BUSINESS_EMAIL=azulboats@gmail.com
 ```
 
 ## Architecture

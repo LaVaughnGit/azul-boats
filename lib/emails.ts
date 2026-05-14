@@ -3,7 +3,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM = process.env.EMAIL_FROM ?? "Azul Boat Rentals <onboarding@resend.dev>";
-const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL ?? "hello@azulboatrentals.com";
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL ?? "azulboats@gmail.com";
 
 export type BookingDetails = {
   date: string;
@@ -37,7 +37,7 @@ function formatDate(dateStr: string) {
 export async function sendCustomerConfirmation(booking: BookingDetails) {
   const formattedDate = formatDate(booking.date);
   const captainLine = booking.withCaptain
-    ? "With Captain (+$25/hr)"
+    ? "With Captain (+$50/hr)"
     : "Self-Drive";
 
   const html = `
@@ -70,21 +70,21 @@ export async function sendCustomerConfirmation(booking: BookingDetails) {
               <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:600;" colspan="2">Reservation Details</td>
             </tr>
             ${[
-              ["Date", formattedDate],
-              ["Start Time", booking.time],
-              ["Duration", `${booking.duration} hours`],
-              ["Option", captainLine],
-              ["Passengers", String(booking.passengers)],
-              ["Boat", "24ft Crownline 235 SS Bowrider"],
-            ]
-              .map(
-                ([label, value], i, arr) => `
+      ["Date", formattedDate],
+      ["Start Time", booking.time],
+      ["Duration", `${booking.duration} hours`],
+      ["Option", captainLine],
+      ["Passengers", String(booking.passengers)],
+      ["Boat", "24ft Crownline 235 XS Bowrider"],
+    ]
+      .map(
+        ([label, value], i, arr) => `
             <tr style="background:${i % 2 === 0 ? "#ffffff" : "#f9fafb"};">
               <td style="padding:12px 16px;color:#6b7280;font-size:13px;font-weight:500;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${label}</td>
               <td style="padding:12px 16px;color:#111827;font-size:13px;font-weight:600;text-align:right;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${value}</td>
             </tr>`
-              )
-              .join("")}
+      )
+      .join("")}
           </table>
 
           <!-- Total -->
@@ -115,7 +115,7 @@ export async function sendCustomerConfirmation(booking: BookingDetails) {
           <!-- Contact -->
           <h3 style="margin:0 0 10px;color:#111827;font-size:15px;font-weight:700;">Questions?</h3>
           <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.8;">
-            📞 <a href="tel:+13056903270" style="color:#FF2D78;text-decoration:none;">(305) 690-3270</a><br>
+            📞 <a href="tel:+12018150643" style="color:#FF2D78;text-decoration:none;">(201) 815-0643</a><br>
             ✉️ <a href="mailto:${BUSINESS_EMAIL}" style="color:#FF2D78;text-decoration:none;">${BUSINESS_EMAIL}</a>
           </p>
         </td></tr>
@@ -173,48 +173,47 @@ export async function sendBusinessNotification(booking: BookingDetails) {
           <!-- Details table -->
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:20px;">
             ${[
-              ["📅 Date", formattedDate],
-              ["🕐 Time", booking.time],
-              ["⏱ Duration", `${booking.duration} hours`],
-              ["⚓ Captain", booking.withCaptain ? "Yes (+$25/hr)" : "No (self-drive)"],
-              ["👥 Passengers", String(booking.passengers)],
-              ["💰 Total", `$${booking.totalAmount}`],
-            ]
-              .map(
-                ([label, value], i, arr) => `
+      ["📅 Date", formattedDate],
+      ["🕐 Time", booking.time],
+      ["⏱ Duration", `${booking.duration} hours`],
+      ["⚓ Captain", booking.withCaptain ? "Yes (+$50/hr)" : "No (self-drive)"],
+      ["👥 Passengers", String(booking.passengers)],
+      ["💰 Total", `$${booking.totalAmount}`],
+    ]
+      .map(
+        ([label, value], i, arr) => `
             <tr style="background:${i % 2 === 0 ? "#ffffff" : "#f9fafb"};">
               <td style="padding:10px 14px;color:#6b7280;font-size:13px;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${label}</td>
               <td style="padding:10px 14px;color:#111827;font-size:13px;font-weight:600;text-align:right;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${value}</td>
             </tr>`
-              )
-              .join("")}
+      )
+      .join("")}
           </table>
 
           <!-- Customer contact -->
           <h4 style="margin:0 0 10px;color:#374151;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Customer Contact</h4>
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:${booking.specialRequests ? "20px" : "0"};">
             ${[
-              ["Email", `<a href="mailto:${booking.email}" style="color:#FF2D78;">${booking.email}</a>`],
-              ["Phone", `<a href="tel:${booking.phone}" style="color:#FF2D78;">${booking.phone}</a>`],
-            ]
-              .map(
-                ([label, value], i, arr) => `
+      ["Email", `<a href="mailto:${booking.email}" style="color:#FF2D78;">${booking.email}</a>`],
+      ["Phone", `<a href="tel:${booking.phone}" style="color:#FF2D78;">${booking.phone}</a>`],
+    ]
+      .map(
+        ([label, value], i, arr) => `
             <tr>
               <td style="padding:10px 14px;color:#6b7280;font-size:13px;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${label}</td>
               <td style="padding:10px 14px;font-size:13px;text-align:right;${i < arr.length - 1 ? "border-bottom:1px solid #e5e7eb;" : ""}">${value}</td>
             </tr>`
-              )
-              .join("")}
+      )
+      .join("")}
           </table>
 
-          ${
-            booking.specialRequests
-              ? `<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 16px;">
+          ${booking.specialRequests
+      ? `<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 16px;">
               <p style="margin:0 0 4px;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Special Requests</p>
               <p style="margin:0;color:#374151;font-size:13px;line-height:1.6;">${booking.specialRequests}</p>
             </div>`
-              : ""
-          }
+      : ""
+    }
 
         </td></tr>
 

@@ -97,7 +97,7 @@ export default async function BookingSuccess({
               Questions?
             </p>
             <a
-              href="mailto:hello@azulboatrentals.com"
+              href="mailto:azulboats@gmail.com"
               className="text-sm font-semibold text-[#00E5FF] hover:underline"
             >
               Email us
