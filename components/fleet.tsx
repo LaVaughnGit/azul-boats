@@ -16,7 +16,7 @@ const FEATURES = [
 
 const SPECS = [
   { label: "Length", value: "24 ft" },
-  { label: "Model", value: "Crownline 235 SS" },
+  { label: "Model", value: "Crownline 235 XS" },
   { label: "Engine", value: "MerCruiser 4.3L" },
   { label: "Fuel", value: "Gasoline" },
 ];
@@ -71,7 +71,7 @@ export default function Fleet() {
                 backgroundClip: "text",
               }}
             >
-              Crownline 235 SS
+              Crownline 235 XS
             </span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-base leading-relaxed">
@@ -93,7 +93,7 @@ export default function Fleet() {
           <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden">
             <Image
               src="/images/boats/crownline1.jpg"
-              alt="24ft Crownline 235 SS Bowrider"
+              alt="24ft Crownline 235 XS Bowrider"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

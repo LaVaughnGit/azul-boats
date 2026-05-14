@@ -21,7 +21,7 @@ async function sendWhatsAppConfirmation(booking: BookingDetails) {
     `👥 ${booking.passengers} passenger${booking.passengers > 1 ? "s" : ""}\n` +
     `💳 $${booking.totalAmount} paid\n\n` +
     `Meet us at Danny's Backyard!\n\n` +
-    `❓Questions? Call (305) 690-3270\n\n` +
+    `❓Questions? Call (201) 815-0643\n\n` +
     `See you on the water! ⛵`;
 
   await twilioClient.messages.create({

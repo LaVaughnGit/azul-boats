@@ -16,11 +16,11 @@ const FAQS = [
   },
   {
     q: "What is the minimum rental duration?",
-    a: "Our minimum rental is 3 hours. We offer 3–8 hour blocks with pricing starting at $80/hr for the boat. Longer adventures are always welcome — just select your preferred duration during checkout.",
+    a: "Our minimum rental is 4 hours. We offer 4–12 hour blocks with pricing starting at $80/hr for the boat. Longer adventures are always welcome — just select your preferred duration during checkout.",
   },
   {
     q: "How many passengers can the boat hold?",
-    a: "The 24ft Crownline 235 SS holds up to 12 passengers when you self-drive, or up to 11 passengers when a captain is on board (the captain counts as one of the 12).",
+    a: "The 24ft Crownline 235 XS holds up to 12 passengers when you self-drive, or up to 11 passengers when a captain is on board (the captain counts as one of the 12).",
   },
   {
     q: "What is included in the rental price?",

@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         price_data: {
           currency: "usd",
           product_data: {
-            name: `Azul Boat Rental — ${duration}h Crownline 235 SS`,
+            name: `Azul Boat Rental — ${duration}h Crownline 235 XS`,
             description: `${date} at ${time} | ${passengers} passengers${withCaptain ? " | With Captain" : " | Self-Drive"}`,
             images: [
               `${process.env.NEXT_PUBLIC_BASE_URL}/images/boats/crownline1.jpg`,

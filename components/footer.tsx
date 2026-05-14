@@ -92,7 +92,7 @@ export default function Footer() {
               Your perfect Miami day is one booking away.
             </h3>
             <p className="text-white/50 text-sm">
-              Available 7 days a week · 8 AM – 9 PM · (305) 690-3270
+              Available 7 days a week · 8 AM – 9 PM · (201) 815-0643
             </p>
           </div>
           <button
@@ -183,10 +183,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#FF2D78] shrink-0" />
                 <a
-                  href="tel:+13056903270"
+                  href="tel:+12018150643"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  +1 (305) 690-3270
+                  +1 (201) 815-0643
                 </a>
               </li>
               <li className="flex items-center gap-3">

@@ -55,7 +55,7 @@ const TIME_SLOTS = [
   "7:00 PM", "8:00 PM", "9:00 PM",
 ];
 
-const DURATIONS = [3, 4, 5, 6, 7, 8];
+const DURATIONS = [4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const BOAT_RATE = 80;
 const CAPTAIN_RATE = 50;
@@ -63,7 +63,7 @@ const CAPTAIN_RATE = 50;
 const defaultBooking: BookingData = {
   date: "",
   time: "",
-  duration: 3,
+  duration: 4,
   withCaptain: false,
   passengers: 4,
   firstName: "",
@@ -190,7 +190,7 @@ function StepOne({
 
       <div>
         <label className={labelCls}>Duration</label>
-        <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+        <div className="grid grid-cols-5 gap-2">
           {DURATIONS.map((h) => (
             <button
               key={h}

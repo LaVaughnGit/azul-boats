@@ -60,10 +60,10 @@ export default function Navbar() {
           {/* Book Now CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+13056903270"
+              href="tel:+12018150643"
               className="text-sm text-white/50 hover:text-white transition-colors font-medium"
             >
-              (305) 690-3270
+              (201) 815-0643
             </a>
             <button
               onClick={openModal}
@@ -80,10 +80,10 @@ export default function Navbar() {
           {/* Mobile: phone + hamburger */}
           <div className="md:hidden flex items-center gap-3">
             <a
-              href="tel:+13056903270"
+              href="tel:+12018150643"
               className="text-xs text-white/50 hover:text-white transition-colors font-medium"
             >
-              (305) 690-3270
+              (201) 815-0643
             </a>
             <button
               className="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:bg-white/5 transition-colors"

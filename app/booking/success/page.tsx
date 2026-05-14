@@ -117,7 +117,7 @@ export default async function BookingSuccess({
         </Link>
 
         <p className="mt-6 text-xs text-white/20">
-          Need to change your booking? Call us at (305) 690-3270
+          Need to change your booking? Call us at (201) 815-0643
         </p>
       </div>
     </main>

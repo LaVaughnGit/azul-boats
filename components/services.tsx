@@ -12,7 +12,7 @@ const SERVICES = [
     title: "Boat Rentals",
     subtitle: "Self-Drive or Captained",
     description:
-      "Take the helm yourself or bring along one of our licensed captains. Either way, the Crownline 235 SS is yours for the day — Bluetooth audio, swim ladder, deck shower, and a cooler packed with ice included.",
+      "Take the helm yourself or bring along one of our licensed captains. Either way, the Crownline 235 XS is yours for the day — Bluetooth audio, swim ladder, deck shower, and a cooler packed with ice included.",
     features: [
       "Hourly rates from $80/hr",
       "Captain add-on for $50/hr",
