@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 40" width="155" height="40">
+  <defs>
+    <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF2D78"/>
+      <stop offset="100%" stop-color="#7B2FBE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gradient circle -->
+  <circle cx="20" cy="20" r="18" fill="url(#circleGrad)"/>
+
+  <!-- Anchor icon (Lucide anchor, 24×24 → scaled to ~16px, centered in circle) -->
+  <g transform="translate(12, 12) scale(0.667)" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="12" cy="5" r="3"/>
+    <line x1="12" y1="8" x2="12" y2="22"/>
+    <path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+  </g>
+
+  <!-- AZUL -->
+  <text x="46" y="23" font-family="Montserrat, sans-serif" font-weight="900" font-size="18" fill="#00E5FF" letter-spacing="4.5">AZUL</text>
+
+  <!-- Boat Rentals -->
+  <text x="47" y="34" font-family="Montserrat, sans-serif" font-weight="500" font-size="9" fill="white" fill-opacity="0.4" letter-spacing="3.15">BOAT RENTALS</text>
+</svg>

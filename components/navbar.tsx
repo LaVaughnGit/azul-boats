@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Anchor, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useBookingModal } from "./booking-modal-provider";
 
 const NAV_LINKS = [
@@ -38,21 +39,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#FF2D78] to-[#7B2FBE] flex items-center justify-center shadow-lg group-hover:shadow-pink-500/40 transition-shadow">
-              <Anchor className="w-4 h-4 text-white" />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span
-                className="text-[#00E5FF] font-black text-lg tracking-[0.25em] uppercase"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                AZUL
-              </span>
-              <span className="text-white/40 text-[9px] tracking-[0.35em] uppercase font-medium">
-                Boat Rentals
-              </span>
-            </div>
+          <a href="#">
+            <Image src="/icons/logo.svg" alt="Azul Boat Rentals" width={155} height={40} priority />
           </a>
 
           {/* Desktop Navigation */}

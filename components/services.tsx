@@ -16,12 +16,12 @@ const SERVICES = [
     features: [
       "Hourly rates from $80/hr",
       "Captain add-on for $50/hr",
-      "Up to 12 passengers",
+      "Up to 9 passengers (self-drive)",
       "All safety equipment included",
       "No prior experience needed (self-drive)",
       "Available 7 days a week",
     ],
-    image: "/images/crownline2.jpg",
+    image: "/images/boats/crownline2.jpg",
     cta: "Book a Rental",
   },
   {
