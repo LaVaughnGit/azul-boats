@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "Where do we depart from?",
-    a: "All departures are from our private slip at [Marina Name], Miami, FL. Full address and parking instructions will be included in your booking confirmation email.",
+    a: "All departures are from our private slip at Hallandale Beach, FL. Full address and parking instructions will be included in your booking confirmation email.",
   },
   {
     q: "Can we bring our own food and drinks?",
