@@ -19,7 +19,7 @@ const STEPS = [
     color: "#7B2FBE",
     title: "Customize Your Trip",
     description:
-      "Decide if you'd like a licensed captain (+$25/hr). Add your passenger count — up to 12 people welcome.",
+      "Decide if you'd like a licensed captain (+$50/hr). Add your passenger count — up to 12 people welcome.",
   },
   {
     number: "03",

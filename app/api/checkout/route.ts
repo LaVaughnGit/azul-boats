@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 const BOAT_RATE = 80;
-const CAPTAIN_RATE = 25;
+const CAPTAIN_RATE = 50;
 
 export async function POST(req: NextRequest) {
   try {

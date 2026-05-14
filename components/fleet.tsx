@@ -34,7 +34,7 @@ export default function Fleet() {
   const [withCaptain, setWithCaptain] = useState(false);
 
   const boatRate = 80;
-  const captainRate = 25;
+  const captainRate = 50;
   const maxPassengers = withCaptain ? 11 : 12;
   const displayRate = withCaptain ? boatRate + captainRate : boatRate;
 
@@ -172,7 +172,7 @@ export default function Fleet() {
                 <Anchor className="w-5 h-5 text-[#00E5FF] shrink-0" />
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">Add a Captain</p>
-                  <p className="text-xs text-white/40">+$25/hr · max 11 passengers</p>
+                  <p className="text-xs text-white/40">+$50/hr · max 11 passengers</p>
                 </div>
                 <button
                   onClick={() => setWithCaptain(!withCaptain)}
@@ -207,7 +207,7 @@ export default function Fleet() {
                   </div>
                   <p className="text-xs text-white/30">
                     {withCaptain
-                      ? `$80 boat + $25 captain · max ${maxPassengers} passengers`
+                      ? `$80 boat + $50 captain · max ${maxPassengers} passengers`
                       : `Self-drive · max ${maxPassengers} passengers`}
                   </p>
                 </div>
