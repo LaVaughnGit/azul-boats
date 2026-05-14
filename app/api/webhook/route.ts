@@ -1,8 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import twilio from "twilio";
 import { sendCustomerConfirmation, sendBusinessNotification } from "@/lib/emails";
 import type { BookingDetails } from "@/lib/emails";
 import { supabaseServer } from "@/lib/supabase";
+
+const twilioClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID!,
+  process.env.TWILIO_AUTH_TOKEN!
+);
+
+async function sendWhatsAppConfirmation(booking: BookingDetails) {
+  if (!booking.phone) return;
+  const captainLine = booking.withCaptain ? " with captain" : " (self-drive)";
+  const body =
+    `Hi ${booking.firstName}! 🌊\n` +
+    `Your Azul Boat Rental is confirmed!\n\n` +
+    `📅 ${booking.date}\n` +
+    `⏰ ${booking.time} · ${booking.duration} hr${booking.duration > 1 ? "s" : ""}${captainLine}\n` +
+    `👥 ${booking.passengers} passenger${booking.passengers > 1 ? "s" : ""}\n` +
+    `💳 $${booking.totalAmount} paid\n\n` +
+    `Meet us at Danny's Backyard!\n\n` +
+    `❓Questions? Call (305) 690-3270\n\n` +
+    `See you on the water! ⛵`;
+
+  await twilioClient.messages.create({
+    from: process.env.TWILIO_WHATSAPP_FROM!,
+    to: `whatsapp:+1${booking.phone.replace(/\D/g, "").replace(/^1/, "")}`,
+    body,
+  });
+}
 
 function timeToHour(time: string): number {
   const [timePart, period] = time.split(" ");
@@ -69,11 +96,12 @@ export async function POST(req: NextRequest) {
       await Promise.all([
         sendCustomerConfirmation(booking),
         sendBusinessNotification(booking),
+        sendWhatsAppConfirmation(booking),
       ]);
-      console.log(`Confirmation emails sent for booking: ${booking.firstName} ${booking.lastName} on ${booking.date}`);
-    } catch (emailErr) {
-      // Log email failure but still return 200 so Stripe doesn't retry the webhook
-      console.error("Email send error:", emailErr);
+      console.log(`Confirmation sent for booking: ${booking.firstName} ${booking.lastName} on ${booking.date}`);
+    } catch (notifyErr) {
+      // Log failure but still return 200 so Stripe doesn't retry the webhook
+      console.error("Notification send error:", notifyErr);
     }
   }
 

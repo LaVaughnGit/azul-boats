@@ -1,7 +1,26 @@
 import Link from "next/link";
 import { CheckCircle, Anchor, Calendar, Mail } from "lucide-react";
+import Stripe from "stripe";
 
-export default function BookingSuccess() {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2026-04-22.dahlia",
+});
+
+export default async function BookingSuccess({
+  searchParams,
+}: {
+  searchParams: Promise<{ session_id?: string }>;
+}) {
+  const { session_id } = await searchParams;
+  let customerEmail: string | null = null;
+  if (session_id) {
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      customerEmail = session.customer_email;
+    } catch {
+      // If retrieval fails, fall back to generic text
+    }
+  }
   return (
     <main
       className="min-h-screen flex flex-col items-center justify-center px-4 text-center"
@@ -63,8 +82,11 @@ export default function BookingSuccess() {
               Confirmation
             </p>
             <p className="text-sm font-semibold text-white">
-              Sent to your email
+              Sent to your email:
             </p>
+            {customerEmail && (
+              <p className="text-xs text-white/50 mt-0.5 break-all">{customerEmail}</p>
+            )}
           </div>
           <div
             className="p-4 rounded-2xl text-left border border-white/8"

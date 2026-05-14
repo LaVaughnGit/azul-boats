@@ -58,7 +58,7 @@ const TIME_SLOTS = [
 const DURATIONS = [2, 3, 4, 5, 6, 7, 8];
 
 const BOAT_RATE = 80;
-const CAPTAIN_RATE = 25;
+const CAPTAIN_RATE = 50;
 
 const defaultBooking: BookingData = {
   date: "",
