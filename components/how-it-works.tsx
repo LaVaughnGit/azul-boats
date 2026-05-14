@@ -19,7 +19,7 @@ const STEPS = [
     color: "#7B2FBE",
     title: "Customize Your Trip",
     description:
-      "Decide if you'd like a licensed captain (+$50/hr). Add your passenger count — up to 12 people welcome.",
+      "Decide if you'd like a licensed captain (+$50/hr). Add your passenger count — up to 9 self-drive or 8 with a captain.",
   },
   {
     number: "03",
@@ -35,7 +35,7 @@ const STEPS = [
     color: "#FF6B35",
     title: "Hit the Water",
     description:
-      "Show up at our Miami marina. We'll go over the boat, get you oriented, and you're off. Sunscreen not included — good times are.",
+      "Show up at our Miami marina. We'll go over the boat, get you oriented, and you're off. Sunscreen not included — good times are!",
   },
 ];
 
@@ -86,8 +86,7 @@ export default function HowItWorks() {
             </span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto">
-            From booking to boarding in four simple steps. We keep it easy so you
-            can focus on enjoying the water.
+            From booking to boarding in four simple steps.
           </p>
         </motion.div>
 

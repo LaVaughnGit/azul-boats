@@ -55,7 +55,7 @@ const TIME_SLOTS = [
   "7:00 PM", "8:00 PM", "9:00 PM",
 ];
 
-const DURATIONS = [2, 3, 4, 5, 6, 7, 8];
+const DURATIONS = [3, 4, 5, 6, 7, 8];
 
 const BOAT_RATE = 80;
 const CAPTAIN_RATE = 50;
@@ -230,7 +230,7 @@ function StepTwo({
   onChange: (d: Partial<BookingData>) => void;
 }) {
   const { boatTotal, captainTotal, total } = calcPrice(data);
-  const maxPassengers = data.withCaptain ? 11 : 12;
+  const maxPassengers = data.withCaptain ? 8 : 9;
 
   return (
     <div className="space-y-6">
@@ -249,7 +249,7 @@ function StepTwo({
                 const newVal = value;
                 onChange({
                   withCaptain: newVal,
-                  passengers: Math.min(data.passengers, newVal ? 11 : 12),
+                  passengers: Math.min(data.passengers, newVal ? 8 : 9),
                 });
               }}
               className={`flex flex-col items-center gap-2 py-4 px-3 rounded-2xl border transition-all ${

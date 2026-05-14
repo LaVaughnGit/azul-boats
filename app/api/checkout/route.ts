@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
             name: `Azul Boat Rental — ${duration}h Crownline 235 SS`,
             description: `${date} at ${time} | ${passengers} passengers${withCaptain ? " | With Captain" : " | Self-Drive"}`,
             images: [
-              `${process.env.NEXT_PUBLIC_BASE_URL}/images/crownline1.jpg`,
+              `${process.env.NEXT_PUBLIC_BASE_URL}/images/boats/crownline1.jpg`,
             ],
           },
           unit_amount: boatTotal * 100,

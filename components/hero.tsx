@@ -14,7 +14,7 @@ function fadeUp(delay: number) {
 
 const STATS = [
   { icon: Star, label: "Top Rated", value: "5.0 ★" },
-  { icon: Users, label: "Passengers", value: "Up to 12" },
+  { icon: Users, label: "Passengers", value: "Up to 9" },
   { icon: Clock, label: "Starting At", value: "$80 / hr" },
 ];
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useBookingModal } from "./booking-modal-provider";
-import { Music, Droplets, Waves, IceCream, Anchor, CheckCircle } from "lucide-react";
+import { Music, Droplets, Waves, IceCream, Anchor, CheckCircle, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
@@ -35,7 +35,7 @@ export default function Fleet() {
 
   const boatRate = 80;
   const captainRate = 50;
-  const maxPassengers = withCaptain ? 11 : 12;
+  const maxPassengers = withCaptain ? 8 : 9;
   const displayRate = withCaptain ? boatRate + captainRate : boatRate;
 
   return (
@@ -92,7 +92,7 @@ export default function Fleet() {
           {/* Image panel */}
           <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden">
             <Image
-              src="/images/crownline1.jpg"
+              src="/images/boats/crownline1.jpg"
               alt="24ft Crownline 235 SS Bowrider"
               fill
               className="object-cover"
@@ -159,6 +159,10 @@ export default function Fleet() {
                     <span className="text-xs text-white/50">{item}</span>
                   </div>
                 ))}
+                <div className="flex items-center gap-2">
+                  <XCircle className="w-3.5 h-3.5 text-[#FF2D78] shrink-0" />
+                  <span className="text-xs text-white/50">Fuel not included</span>
+                </div>
               </div>
             </div>
 
@@ -172,7 +176,7 @@ export default function Fleet() {
                 <Anchor className="w-5 h-5 text-[#00E5FF] shrink-0" />
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">Add a Captain</p>
-                  <p className="text-xs text-white/40">+$50/hr · max 11 passengers</p>
+                  <p className="text-xs text-white/40">+$50/hr · max 8 passengers</p>
                 </div>
                 <button
                   onClick={() => setWithCaptain(!withCaptain)}
@@ -208,7 +212,7 @@ export default function Fleet() {
                   <p className="text-xs text-white/30">
                     {withCaptain
                       ? `$80 boat + $50 captain · max ${maxPassengers} passengers`
-                      : `Self-drive · max ${maxPassengers} passengers`}
+                      : `Self-drive · max ${maxPassengers} pax`}
                   </p>
                 </div>
                 <button

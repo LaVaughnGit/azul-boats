@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "What is the minimum rental duration?",
-    a: "Our minimum rental is 2 hours. We offer 2–8 hour blocks with pricing starting at $80/hr for the boat. Longer adventures are always welcome — just select your preferred duration during checkout.",
+    a: "Our minimum rental is 3 hours. We offer 3–8 hour blocks with pricing starting at $80/hr for the boat. Longer adventures are always welcome — just select your preferred duration during checkout.",
   },
   {
     q: "How many passengers can the boat hold?",

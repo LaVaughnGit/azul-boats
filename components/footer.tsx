@@ -177,7 +177,7 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-[#FF2D78] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-white/60">Danny's Backyard</p>
-                  <p className="text-xs text-white/30">Miami, FL 33101</p>
+                  <p className="text-xs text-white/30">Hallandale Beach, FL 33009</p>
                 </div>
               </li>
               <li className="flex items-center gap-3">
@@ -186,16 +186,16 @@ export default function Footer() {
                   href="tel:+13056903270"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  (305) 690-3270
+                  +1 (305) 690-3270
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#FF2D78] shrink-0" />
                 <a
-                  href="mailto:hello@azulboatrentals.com"
+                  href="mailto:azulboats@gmail.com"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  hello@azulboatrentals.com
+                  azulboats@gmail.com
                 </a>
               </li>
             </ul>
@@ -209,9 +209,9 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { day: "Monday – Friday", hours: "8:00 AM – 9:00 PM" },
-                { day: "Saturday", hours: "7:00 AM – 9:00 PM" },
+                { day: "Saturday", hours: "8:00 AM – 9:00 PM" },
                 { day: "Sunday", hours: "8:00 AM – 9:00 PM" },
-                { day: "Holidays", hours: "By appointment" },
+                { day: "Holidays", hours: "Contact in advance" },
               ].map(({ day, hours }) => (
                 <li key={day} className="flex justify-between text-sm gap-4">
                   <span className="text-white/40">{day}</span>
@@ -231,7 +231,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} Azul Boat Rentals LLC. All rights reserved.
+            © {new Date().getFullYear()} Azul Boats LLC. All rights reserved.
           </p>
           <div className="flex gap-5">
             {LEGAL.map(({ label, href }) => (
