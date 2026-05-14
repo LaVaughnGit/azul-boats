@@ -163,6 +163,10 @@ export default function Fleet() {
                   <XCircle className="w-3.5 h-3.5 text-[#FF2D78] shrink-0" />
                   <span className="text-xs text-white/50">Fuel not included</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <XCircle className="w-3.5 h-3.5 text-[#FF2D78] shrink-0" />
+                  <span className="text-xs text-white/50">Security deposit: $1,000</span>
+                </div>
               </div>
             </div>
 
