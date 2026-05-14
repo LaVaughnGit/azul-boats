@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useBookingModal } from "./booking-modal-provider";
 import {
@@ -9,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQS = [
+const FAQS: { q: string; a: ReactNode }[] = [
   {
     q: "Do I need a boating license to rent?",
     a: "In Florida, boaters born on or after January 1, 1988 must have a boating safety education card or pass a simple online course ($9.95). We can walk you through the details when you book. Alternatively, add one of our licensed captains for a completely worry-free experience.",
@@ -24,7 +25,7 @@ const FAQS = [
   },
   {
     q: "What is included in the rental price?",
-    a: "Your rental includes the boat, all required safety equipment (life jackets for every passenger, flares, fire extinguisher), a Bimini top for shade, deck shower, swim ladder, cooler with ice, and Bluetooth stereo. Fuel is included for standard cruising in Biscayne Bay.",
+    a: <>Your rental includes the boat, all required safety equipment (life jackets for every passenger, flares, fire extinguisher), a Bimini top for shade, deck shower, swim ladder, cooler, and Bluetooth stereo. Fuel is <strong>NOT</strong> included. Fuel costs will be charged at the end of the trip.</>,
   },
   {
     q: "What's your cancellation policy?",
